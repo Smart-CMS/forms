@@ -15,6 +15,11 @@ use Livewire\Component;
 use SmartCms\Forms\Models\ContactForm;
 use SmartCms\Forms\Models\Form;
 
+/**
+ * @property Form $model
+ * @property array $data
+ * @property mixed $form
+ */
 class FormComponent extends Component implements HasForms
 {
     use InteractsWithForms;
@@ -29,11 +34,11 @@ class FormComponent extends Component implements HasForms
         foreach ($this->model->fields as $field) {
             $name = str()->slug($field['label']);
             $formField = match ($field['type']) {
-                'text' => TextInput::make($name)->label($field['label']),
                 'select' => Select::make($name)->options($field['options'])->label($field['label']),
                 'textarea' => Textarea::make($name)->label($field['label']),
                 'checkbox' => Checkbox::make($name)->label($field['label']),
                 'radio' => Radio::make($name)->options($field['options'])->label($field['label']),
+                default => TextInput::make($name)->label($field['label']),
             };
             $form[] = $formField->required($field['required'] ?? true);
         }

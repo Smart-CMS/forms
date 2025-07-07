@@ -4,6 +4,11 @@ namespace SmartCms\Forms\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property string $name
+ * @property array $fields
+ * @property array $content
+ */
 class Form extends Model
 {
     protected $casts = [
