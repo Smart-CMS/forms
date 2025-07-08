@@ -20,7 +20,7 @@ class FormsServiceProvider extends PackageServiceProvider
     {
         $package->name(static::$name)
             ->hasConfigFile()
-            ->hasMigration('create_forms_table')
+            ->hasMigrations(['create_forms_table', 'create_contact_forms_table'])
             ->hasTranslations()
             ->hasViews('forms')
             ->hasInstallCommand(function (InstallCommand $command) {
