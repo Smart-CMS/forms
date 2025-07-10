@@ -3,17 +3,18 @@
 namespace SmartCms\Forms\Admin\Resources\Forms\Pages;
 
 use Filament\Resources\Pages\CreateRecord;
-use Illuminate\Database\Eloquent\Model;
 use SmartCms\Forms\Admin\Resources\Forms\FormResource;
+use SmartCms\Support\Admin\Components\Actions\SaveAction;
+use SmartCms\Support\Admin\Components\Actions\SaveAndClose;
 
 class CreateForm extends CreateRecord
 {
     protected static string $resource = FormResource::class;
 
-    protected function handleRecordCreation(array $data): Model
+    protected function getHeaderActions(): array
     {
-        $data['content'] = [];
-
-        return parent::handleRecordCreation($data);
+        return [
+            SaveAction::make($this),
+        ];
     }
 }

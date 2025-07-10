@@ -11,8 +11,11 @@ return new class extends Migration
         Schema::create(config('forms.forms_table_name', 'forms'), function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->json('fields');
-            $table->json('content');
+            $table->json('title')->nullable();
+            $table->json('button')->nullable();
+            $table->json('notification')->nullable();
+            $table->json('fields')->nullable();
+            $table->json('content')->nullable();
             $table->timestamps();
         });
     }

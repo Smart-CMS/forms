@@ -4,7 +4,7 @@
      </div>
      <div class="flex justify-end mt-3">
          <x-filament::button type="submit">
-             <span class="fi-btn-label">Submit</span>
+             <span class="fi-btn-label">{{$this->model->button ?? 'Submit'}}</span>
          </x-filament::button>
      </div>
  </form>
