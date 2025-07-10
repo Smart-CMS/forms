@@ -6,18 +6,16 @@ use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Schemas\Components\Flex;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Tabs;
+use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Schema;
 use SmartCms\Forms\FormFieldEnum;
+use SmartCms\Support\Admin\Components\Forms\NameField;
 use SmartCms\Support\Admin\Components\Layout\Aside;
 use SmartCms\Support\Admin\Components\Layout\FormGrid;
 use SmartCms\Support\Admin\Components\Layout\LeftGrid;
 use SmartCms\Support\Admin\Components\Layout\RightGrid;
-use AbdulmajeedJamaan\FilamentTranslatableTabs\TranslatableTabs;
-use Filament\Schemas\Components\Section;
-use Filament\Schemas\Components\Tabs;
-use Filament\Schemas\Components\Tabs\Tab;
-use SmartCms\Support\Admin\Components\Forms\NameField;
 
 class FormForm
 {
@@ -43,7 +41,7 @@ class FormForm
                         ]),
                         Tabs::make('translate')->schema(
                             self::getTabs()
-                        )
+                        ),
                     ]),
                     RightGrid::make()->schema([
                         Aside::make(),
@@ -57,7 +55,7 @@ class FormForm
         return app('lang')->adminLanguages()->map(function ($lang) {
             return Tab::make($lang->name)->schema([
                 Repeater::make('fields.' . $lang->slug)->grid(1)
-                    ->itemLabel(fn(array $state): ?string => $state['label'] ?? null)
+                    ->itemLabel(fn (array $state): ?string => $state['label'] ?? null)
                     ->hiddenLabel()
                     ->filled(false)
                     ->minItems(1)
